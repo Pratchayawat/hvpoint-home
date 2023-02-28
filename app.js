@@ -40,10 +40,10 @@ class Game extends React.Component {
         
         <div className="bottom-navbar">
         <button className="button1" onClick={() => this.handleClick("panel1")} style={{ backgroundImage: "url('./assets/img/icon_panel1.png')" }}></button>
-        <button className="button2" onClick={() => this.handleClick("panel2")} style={{ backgroundImage: "url('./assets/img/icon_panel2.png')" }}></button>
+        <button className="button2" style={{ backgroundImage: "url('./assets/img/icon_panel2.png')" }}></button>
         <button className="button3" onClick={() => this.handleClick("panel3")} style={{ backgroundImage: "url('./assets/img/icon_panel3.png')" }}></button>
-        <button className="button4" onClick={() => this.handleClick("panel4")} style={{ backgroundImage: "url('./assets/img/icon_panel4.png')" }}></button>
-        <button className="button5" onClick={() => this.handleClick("panel5")} style={{ backgroundImage: "url('./assets/img/icon_panel5.png')" }}></button>
+        <button className="button4" style={{ backgroundImage: "url('./assets/img/icon_panel4.png')" }}></button>
+        <button className="button5" style={{ backgroundImage: "url('./assets/img/icon_panel5.png')" }}></button>
         </div>
 
         {this.state.activePanel === "panel1" && (
