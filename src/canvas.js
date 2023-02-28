@@ -38,7 +38,7 @@ async function createCharCustomize() {
     //
 
     // create male
-    const { meshes: m_meshes, animationGroups: m_animationGroups } = await BABYLON.SceneLoader.ImportMeshAsync("", "/assets/glb/", "m_char.glb", scene);
+    const { meshes: m_meshes, animationGroups: m_animationGroups } = await BABYLON.SceneLoader.ImportMeshAsync("", "./assets/glb/", "m_char.glb", scene);
    
     var m_headCnt = -1, m_bodyCnt = -1, m_legCnt = -1;
     for (var i = 1; i < m_meshes.length; i++) {
@@ -54,7 +54,7 @@ async function createCharCustomize() {
     m_meshes[0].scaling.scaleInPlace(1.5);
 
     // create female
-    const { meshes: f_meshes, animationGroups: f_animationGroups } = await BABYLON.SceneLoader.ImportMeshAsync("", "/assets/glb/", "f_char.glb", scene);
+    const { meshes: f_meshes, animationGroups: f_animationGroups } = await BABYLON.SceneLoader.ImportMeshAsync("", "./assets/glb/", "f_char.glb", scene);
 
     var f_headCnt = -1, f_bodyCnt = -1, f_legCnt = -1;
     for (var i = 1; i < f_meshes.length; i++) {
