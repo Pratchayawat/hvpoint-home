@@ -3,11 +3,15 @@ body {
   padding: 0;
   overflow: hidden;
 }
-  
-button:hover {
+
+button {
   cursor: pointer;
 }
 
+.bold {
+  font-weight: bold;
+}
+  
 canvas {
   position: absolute;
   top: 0;
@@ -24,7 +28,7 @@ canvas {
   width: 100%;
   height: 90px;
   background-color: rgb(1, 20, 88);
-  border-color: rgb(0, 132, 255);
+  border-color: rgb(72, 165, 252);
   border-style: none none solid none;
   color: white;
   padding: 10px;
@@ -48,27 +52,51 @@ canvas {
   bottom: 0;
   width: 100%;
   height: 70px;
-  background-color: rgb(1, 20, 88);
-  border-color: rgb(0, 132, 255);
-  border-style: solid none none none;
+  background-color: rgb(1, 20, 88, 0.9);
+  border-color: rgb(72, 165, 252);
+  border-style: solid solid none solid;
+  border-radius: 10px 10px 0px 0px;
+  border-width: 2px;
+  filter: drop-shadow(0px -3px 10px #2d3bff);
   padding: 10px;
   box-sizing: border-box;
   z-index: 1;
 }
 
 .bottom-navbar button {
+  display: flex;
+  flex-direction: column;
   width: 50px;
   height: 50px;
-  margin: 0 10px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
   border: none;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
+  text-align: center;
+  white-space: nowrap;
 }
 
-.bottom-navbar button:hover {
-  cursor: pointer;
+.bottom-navbar button img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.bottom-navbar button div {
+  -webkit-text-stroke: .2px black;
+  translate: 0px -10px;
+}
+
+.button3 {
+  width: 90px !important;
+  height: 90px !important;
+  translate: 0px -20px !important;
 }
 
 .panel {
@@ -77,7 +105,7 @@ canvas {
   bottom: 0;
   right: -100%;
   width: 100%;
-  background-color: rgb(39, 28, 59);
+  background-color: rgb(26, 43, 104);
   z-index: 2;
   animation: slide-in 0.1s forwards;
 }
@@ -110,12 +138,13 @@ canvas {
 }
 
 .panel-header button {
-  margin: 0;
-  padding: 10px;
+  width: 30px;
+  height: 30px;
   border: none;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
 }
 
 .panel-header h2 {
@@ -132,7 +161,8 @@ canvas {
   overflow-y: auto;
 }
 
-/* ----------------- panel 1 ----------------- */
+/* ----------------- panel 1 profile ----------------- */
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -168,6 +198,97 @@ canvas {
 .profile-header p {
   color: #ffffff;
   margin: 1rem;
+}
+
+/* ----------------- panel 2 appearance ----------------- */
+
+.character-customization-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.gender-select {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.gender-select button {
+  margin: 0 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.gender-select button.active {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.character-display {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.character-display img {
+  max-width: 100%;
+}
+
+.character-modify {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  width: 60%;
+}
+
+.character-modify button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.left-buttons {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-between;
+}
+
+.left-buttons button {
+  margin-bottom: 10px;
+}
+
+.right-buttons {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-between;
+}
+
+.right-buttons button {
+  margin-bottom: 10px;
+}
+
+.confirm-changes button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
 }
 
 /* ----------------- panel 3-0 ----------------- */
@@ -255,7 +376,9 @@ canvas {
 }
 
 .content3-2.floor img {
-  margin: 20px;
+  max-width: 200px;
+  max-height: 200px;
+  margin: 10px;
   border-radius: 20px;
   border-style: solid;
   border-color:#ffffff;
@@ -319,4 +442,63 @@ canvas {
   border-style: solid;
   border-color:#ffffff;
   background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgb(35, 35, 151) 35%, rgba(0,212,255,1) 100%);
+}
+
+/* ----------------- panel 4 ----------------- */
+.message-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.message-list li {
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  margin: 20px;
+}
+
+.message-list .message-sender {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.message-list .message-sender img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.message-list .message-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 5px;
+}
+
+/* ----------------- panel 5 ----------------- */
+
+.history-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #007bff;
+  margin: 20px;
+}
+
+.history-list .history-datetime {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px;
+}
+
+.history-list .history-detail {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
 }
