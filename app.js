@@ -31,6 +31,7 @@ class Game extends React.Component {
     return (
       <div>
 
+        <img id="canvas_bg" src="./assets/img/background.png" />
         <canvas id="canvas_main"></canvas>
         <div className="navbar">
           <img src="./assets/img/profile-image.png" alt="Profile Image" />
@@ -68,7 +69,7 @@ class Game extends React.Component {
         )}
         {this.state.activePanel === "panel2" && (
 
-          <CustomizationPanel onClose={() => this.handleClose()} />
+          <AppearancePanel onClose={() => this.handleClose()} />
 
         )}
         {this.state.activePanel === "panel3" && (
@@ -134,7 +135,17 @@ class ProfilePanel extends React.Component {
 }
 
 // ------------------- Panel 2 Appearance -------------------
-class CustomizationPanel extends React.Component {
+class AppearancePanel extends React.Component {
+
+  async componentDidMount() {
+    setTimeout(async () => {
+      await createAppearance();
+    }, 100);
+  }
+
+  componentWillUnmount() {
+    disposeAppearance();
+  }
 
   constructor(props) {
     super(props);
@@ -153,11 +164,12 @@ class CustomizationPanel extends React.Component {
 
   changeGender(gender) {
     this.setState({ gender, character: 'default' });
+    gender == 'male' ? SetGender(Gender.Male) : SetGender(Gender.Female);
   }
 
-  modifyCharacter(type, direction) {
+  modifyCharacter(index, direction) {
     // Modify character based on type and direction
-    // For example, change hairstyle, eye color, etc.
+    onCustomizeSelect(index, direction);
   }
 
   confirmChanges() {
@@ -191,23 +203,23 @@ class CustomizationPanel extends React.Component {
           </div>
           <div className="character-modify">
             <div className="left-buttons">
-              <button onClick={this.handleLeftButtonClick}>Left 1</button>
-              <button onClick={this.handleLeftButtonClick}>Left 2</button>
-              <button onClick={this.handleLeftButtonClick}>Left 3</button>
+              <button onClick={() => this.modifyCharacter(0, 0)} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
+              <button onClick={() => this.modifyCharacter(1, 0)} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
+              <button onClick={() => this.modifyCharacter(2, 0)} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
             </div>
 
             <div className="character-display">
-              <img src={`./assets/img/${gender}-${character}.png`} alt="Character" />
+              <canvas id="canvas_appearance" />
             </div>
 
             <div className="right-buttons">
-              <button onClick={this.handleRightButtonClick}>Right 1</button>
-              <button onClick={this.handleRightButtonClick}>Right 2</button>
-              <button onClick={this.handleRightButtonClick}>Right 3</button>
+              <button onClick={() => this.modifyCharacter(0, 1)} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
+              <button onClick={() => this.modifyCharacter(1, 1)} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
+              <button onClick={() => this.modifyCharacter(2, 1)} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
             </div>
           </div>
           <div className="confirm-changes">
-            <button onClick={this.confirmChanges}>Confirm</button>
+            <button onClick={() => this.confirmChanges}>Confirm</button>
           </div>
         </div>
 
@@ -505,5 +517,5 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// from canvas.js
+// canvas.js
 createCharCustomize();

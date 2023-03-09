@@ -11,13 +11,14 @@ button {
 .bold {
   font-weight: bold;
 }
-  
-canvas {
+
+#canvas_bg, #canvas_main {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 
 .navbar {
@@ -231,22 +232,12 @@ canvas {
   background-color: #007bff;
 }
 
-.character-display {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.character-display img {
-  max-width: 100%;
-}
-
 .character-modify {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
-  width: 60%;
+  width: 300px;
+  margin-bottom: 1rem;
 }
 
 .character-modify button {
@@ -259,15 +250,23 @@ canvas {
   cursor: pointer;
 }
 
+.character-display {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-display canvas {
+  width: inherit;
+  height: 300px;
+}
+
 .left-buttons {
   display: flex;
   flex-direction: column;
   height: 300px;
   justify-content: space-between;
-}
-
-.left-buttons button {
-  margin-bottom: 10px;
 }
 
 .right-buttons {
@@ -277,8 +276,14 @@ canvas {
   justify-content: space-between;
 }
 
+.left-buttons button, .right-buttons button {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .right-buttons button {
-  margin-bottom: 10px;
+  transform: scaleX(-1);
 }
 
 .confirm-changes button {
