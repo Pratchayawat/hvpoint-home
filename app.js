@@ -174,6 +174,7 @@ class AppearancePanel extends React.Component {
 
   confirmChanges() {
     // Save character changes
+    this.props.onClose();
   }
 
   render() {
@@ -188,19 +189,10 @@ class AppearancePanel extends React.Component {
 
         <div className="character-customization-panel">
           <div className="gender-select">
-            <button
-              className={gender === 'male' ? 'active' : ''}
-              onClick={() => this.changeGender('male')}
-            >
-              Male
-            </button>
-            <button
-              className={gender === 'female' ? 'active' : ''}
-              onClick={() => this.changeGender('female')}
-            >
-              Female
-            </button>
+            <button className={gender === 'male' ? 'active' : ''} onClick={() => this.changeGender('male')} style={{ backgroundImage: "url('./assets/img/icon_male.png')" }} />
+            <button className={gender === 'female' ? 'active' : ''} onClick={() => this.changeGender('female')} style={{ backgroundImage: "url('./assets/img/icon_female.png')" }} />
           </div>
+
           <div className="character-modify">
             <div className="left-buttons">
               <button onClick={() => this.modifyCharacter(0, 0)} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
@@ -295,15 +287,15 @@ class AdvicePanel extends React.Component {
           <div className="content3-1">
             {Array.from({ length: 10 }, (_, i) => (
               <div className="content3-1 item" onClick={this.handleNext}>
-                <img src="./assets/img/category-icon.png"/>
+                <img src="./assets/img/icon_floor.png"/>
                 <div className="content3-1 details">
                   <div className="content3-1 detail-1">
                     <h3>Floor Name</h3>
                     <p>xxxxxxxxxxxxxxxx</p>
                   </div>
                   <div className="content3-1 detail-2">
-                    <p>0 Offline</p>
-                    <h2>5/100</h2>
+                    <h6>Offline</h6>
+                    <h3>5/100</h3>
                   </div>
                 </div>
               </div>
@@ -314,19 +306,19 @@ class AdvicePanel extends React.Component {
         {this.state.currentPanelIndex == 2 && (
           <div className="content3-2">
             <div className="content3-2 floor">
-              <img src="./assets/img/category-icon.png"/>
-              <div>
-                <h3>Floor Name</h3>
+              <img src="./assets/img/icon_floor.png"/>
+              <div className="content3-2 floor-detail">
+                <p className="bold">Floor Name</p>
                 <p>xxxxxxxxxxxxxxxx</p>
-                <p>Online 5/100</p>
+                <p id="floor-status">Online 5/100</p>
               </div>
             </div>
             {Array.from({ length: 5 }, (_, i) => (
               <div className="content3-2 item" onClick={this.handleNext}>
-                <img src="./assets/img/profile-image.png"/>
+                <img src="./assets/img/profile-image-2.png"/>
                 <div className="content3-2 details">
                   <div className="content3-2 detail">
-                    <h3>Docter Name</h3>
+                    <h3 className="bold">Docter Name</h3>
                     <p>สาขา xxxxxxxxx จาก xxxxxxxxx</p>
                     <p>offline</p>
                   </div>
@@ -340,7 +332,7 @@ class AdvicePanel extends React.Component {
         {this.state.currentPanelIndex == 3 && (
           <div className="content3-3">
             <div className="content3-3 doctor">
-              <img src="./assets/img/profile-image.png"/>
+              <img src="./assets/img/profile-image-2.png"/>
               <div className="content3-3 doctor detail">
                 <h3>Doctor Name</h3>
                 <p>xxxxxxxxxxxxxxxx</p>
@@ -348,11 +340,11 @@ class AdvicePanel extends React.Component {
               </div>
             </div>
             <div className="content3-3 join">
-              <button>JOIN NOW {'\n'} 50 HVT</button>
+              <button>JOIN NOW {"\n"} 50 HVT</button>
             </div>
             <div className="content3-3 detail">
               <h5>Description</h5>
-              <p>xxxxxxxxxxxxxxxxxxxxxxxxxxx/nxxxxxxxxxxxxxxxxxxxxxx</p>
+              <p>xxxxxxxxxxxxxxxxxxxxxxxxxxx{"\n"}xxxxxxxxxxxxxxxxxxxxxx</p>
             </div>
           </div>
         )}
@@ -370,31 +362,31 @@ class MessagePanel extends React.Component {
     this.state = {
       messages: [
         {
-          content: 'Welcome to the game!',
+          content: 'หมอได้ส่งคำแนะนำให้คุณ',
           sender: {
             name: 'Docter Name',
-            profileImage: './assets/img/profile-image.png'
+            profileImage: './assets/img/profile-image-2.png'
           }
         },
         {
-          content: 'You have 3 lives remaining',
+          content: 'หมอได้ส่งคำแนะนำให้คุณ',
           sender: {
             name: 'Docter Name',
-            profileImage: './assets/img/profile-image.png'
+            profileImage: './assets/img/profile-image-2.png'
           }
         },
         {
-          content: 'You found a power-up!',
+          content: 'หมอได้ส่งคำแนะนำให้คุณ',
           sender: {
             name: 'Docter Name',
-            profileImage: './assets/img/profile-image.png'
+            profileImage: './assets/img/profile-image-2.png'
           }
         },
         {
-          content: 'Game over. Try again?',
+          content: 'หมอได้ส่งคำแนะนำให้คุณ',
           sender: {
             name: 'Docter Name',
-            profileImage: './assets/img/profile-image.png'
+            profileImage: './assets/img/profile-image-2.png'
           }
         }
       ]
@@ -410,7 +402,7 @@ class MessagePanel extends React.Component {
       <div className="panel">
         <div className="panel-header">
           <button onClick={this.handleBack} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
-          <h2 className="panel-title">Profile</h2>
+          <h2 className="panel-title">Message</h2>
         </div>
         <div className="panel-content">
 
@@ -446,29 +438,29 @@ class HistoryPanel extends React.Component {
         {
           date: '01/01/2023',
           time: '09:00-09:30',
-          floor: 1,
-          doctor: 'Mr.xxxxx',
+          floor: 'Floor 1',
+          doctor: 'Dr.xxxxx',
           note: 'common health issue'
         },
         {
           date: '01/01/2023',
           time: '09:00-09:30',
-          floor: 1,
-          doctor: 'Mr.xxxxx',
+          floor: 'Floor 1',
+          doctor: 'Dr.xxxxx',
           note: 'common health issue'
         },
         {
           date: '01/01/2023',
           time: '09:00-09:30',
-          floor: 1,
-          doctor: 'Mr.xxxxx',
+          floor: 'Floor 1',
+          doctor: 'Dr.xxxxx',
           note: 'common health issue'
         },
         {
           date: '01/01/2023',
           time: '09:00-09:30',
-          floor: 1,
-          doctor: 'Mr.xxxxx',
+          floor: 'Floor 1',
+          doctor: 'Dr.xxxxx',
           note: 'common health issue'
         }
       ]
@@ -484,11 +476,15 @@ class HistoryPanel extends React.Component {
       <div className="panel">
         <div className="panel-header">
           <button onClick={this.handleBack} style={{ backgroundImage: "url('./assets/img/back_btn.png')" }} />
-          <h2 className="panel-title">Profile</h2>
+          <h2 className="panel-title">History</h2>
         </div>
         <div className="panel-content">
 
           <div className="history-list">
+            <div className="history-label">
+              <p className="bold">Date</p>
+              <p className="bold">Time</p>
+            </div>
             <ul>
               {this.state.histories.map((history, index) => (
                 <li key={index}>
