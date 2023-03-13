@@ -34,7 +34,7 @@ class Game extends React.Component {
         <img id="canvas_bg" src="./assets/img/background.png" />
         <canvas id="canvas_main"></canvas>
         <div className="navbar">
-          <img src="./assets/img/profile-image.png" alt="Profile Image" />
+          <img src="./assets/img/profile-image-2.png" alt="Profile Image" />
           <span>{this.props.characterName}</span>
           <span>{this.props.currency}</span>
         </div>
